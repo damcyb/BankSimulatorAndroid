@@ -4,30 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragment_intro"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--    </FrameLayout>-->
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragment_login"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--    </FrameLayout>-->
+    tools:context=".IntroFragment">
 
     <ImageView
         android:id="@+id/bankSimIntroImg"
@@ -51,7 +28,6 @@
         android:gravity="center"
         android:text="BankSim"
         android:textAlignment="center"
-        android:textColor="#4D422B"
         android:textSize="50sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="@+id/bankSimIntroImg"
@@ -64,7 +40,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:text="by Damian Cybulski"
-        android:textColor="#4D422B"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/bankSimIntroImg"
