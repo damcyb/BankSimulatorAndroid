@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Deposit money" android:id="@+id/depositMoneyItm"></item>
+    <item android:title="Withdraw money" android:id="@+id/withdrawMoneyItm"></item>
+    <item android:title="Transfer money" android:id="@+id/transferMoneyItm"></item>
+    <item android:title="Update user data" android:id="@+id/updateUserDataItm"></item>
+    <item android:title="Delete account" android:id="@+id/deleteAccountItm"></item>
+    <item android:title="Logout" android:id="@+id/logoutItm"></item>
+
+</menu>
