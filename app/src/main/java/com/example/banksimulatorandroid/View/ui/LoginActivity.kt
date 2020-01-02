@@ -1,12 +1,14 @@
-package com.example.banksimulatorandroid.View
+package com.example.banksimulatorandroid.View.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.banksimulatorandroid.Constants.EXTRA_USER_REST
+import com.example.banksimulatorandroid.Model.Response.UserRest
 import com.example.banksimulatorandroid.R
 import com.example.banksimulatorandroid.ViewModel.LoginViewModel
 
@@ -24,16 +26,24 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<TextView>(R.id.passwordTxt)
         val loginBtn = findViewById<Button>(R.id.loginBtn)
 
+        observeViewModel()
+
         loginBtn.setOnClickListener {
             viewModel.loginUser(email.text.toString(), password.text.toString())
-            moveToUserAccountActivity()
         }
     }
 
-    private fun moveToUserAccountActivity() {
-        val intent = Intent(this, LoginActivity::class.java).apply {
-            //putExtra(EXTRA_MESSAGE, message)
-        }
+    private fun observeViewModel() {
+        viewModel.userRest.observe(this, Observer { user ->
+            user?.let {
+                moveToUserAccountActivity(it)
+            }
+        })
+    }
+
+    private fun moveToUserAccountActivity(userAccountDetails: UserRest) {
+        val intent = Intent(this, UserAccountActivity::class.java)
+        intent.putExtra(EXTRA_USER_REST, userAccountDetails)
         startActivity(intent)
     }
 }

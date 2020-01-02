@@ -1,4 +1,4 @@
-package com.example.banksimulatorandroid.Model
+package com.example.banksimulatorandroid.Model.Api
 
 import com.example.banksimulatorandroid.Model.Request.UserLoginRequestModel
 import com.example.banksimulatorandroid.Model.Response.UserRest

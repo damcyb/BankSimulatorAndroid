@@ -1,4 +1,4 @@
-package com.example.banksimulatorandroid.View
+package com.example.banksimulatorandroid.View.ui
 
 import android.content.Intent
 import android.graphics.Color

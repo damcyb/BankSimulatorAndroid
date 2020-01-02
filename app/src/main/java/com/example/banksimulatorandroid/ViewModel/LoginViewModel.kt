@@ -2,20 +2,17 @@ package com.example.banksimulatorandroid.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.banksimulatorandroid.Model.Request.UserLoginRequestModel
+import androidx.lifecycle.MutableLiveData
 import com.example.banksimulatorandroid.Model.Response.UserRest
-import com.example.banksimulatorandroid.Model.UserRestService
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
+import com.example.banksimulatorandroid.Model.Service.UserRestService
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
 import javax.security.auth.callback.Callback
 
 class LoginViewModel(application: Application): AndroidViewModel(application) {
 
     private val userRestService = UserRestService()
+    val userRest = MutableLiveData<UserRest>()
 
     fun loginUser(email: String, password: String) {
         getUserByEmailAndPassword(email, password)
@@ -23,24 +20,17 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
 
     private fun getUserByEmailAndPassword(email: String, password: String) {
 
-
         val requestCall = userRestService.getUserByEmailAndPassword(email, password)
         requestCall.enqueue(object : Callback, retrofit2.Callback<UserRest> {
             override fun onFailure(call: Call<UserRest>, t: Throwable) {
                 println("FAILURE")
-//                blogLoadError.value = true
-//                loading.value = false
+                userRest.value = UserRest("","","","",0.0,"")
             }
-
             override fun onResponse(call: Call<UserRest>, response: Response<UserRest>) {
-                val res = response.body()
-                println(res)
+                userRest.value = response.body()!!
                 println("SUCCESS")
-//                blogs.value = response.body()
-//                blogLoadError.value = false
-//                loading.value = false
             }
-
         })
+        //return requestCall.execute().body()!!
     }
 }

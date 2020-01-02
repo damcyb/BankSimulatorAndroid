@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <TextView
+        android:id="@+id/dateTxt"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Date"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/receiverFirstNameTxt"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|left"
+        android:text="firstName"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/receiverLastNameTxt"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|left"
+        android:text="lastName"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/receiverAccountNumberTxt"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|left"
+        android:text="accountNumber"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/transferredMoneyTxt"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|left"
+        android:text="PLN"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/transferDirectionImg"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@android:color/holo_green_dark" />
+
+</LinearLayout>
