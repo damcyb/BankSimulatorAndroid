@@ -1,6 +1,7 @@
 package com.example.banksimulatorandroid.Model.Service
 
 import com.example.banksimulatorandroid.Model.Api.UserRestServiceApi
+import com.example.banksimulatorandroid.Model.Request.CreateUserRequestModel
 import com.example.banksimulatorandroid.Model.Request.UserLoginRequestModel
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import retrofit2.Call
@@ -26,5 +27,10 @@ class UserRestService {
     fun getUserByEmailAndPassword(email: String, password: String): Call<UserRest> {
         val requestBody = UserLoginRequestModel(email, password)
         return api.loginUser(requestBody)
+    }
+
+    fun postNewUser(firstName: String, lastName: String, email: String, password: String): Call<UserRest> {
+        val requestBody = CreateUserRequestModel(firstName, lastName, email, password)
+        return api.createUser(requestBody)
     }
 }

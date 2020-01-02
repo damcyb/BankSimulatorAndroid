@@ -9,18 +9,18 @@ import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback
 
-class LoginViewModel(application: Application): AndroidViewModel(application) {
+class CreateUserViewModel (application: Application): AndroidViewModel(application) {
 
     private val userRestService = UserRestService()
     val userRest = MutableLiveData<UserRest>()
 
-    fun loginUser(email: String, password: String) {
-        getUserByEmailAndPassword(email, password)
+    fun createUser(firstName: String, lastName: String, email: String, password: String) {
+        postNewUser(firstName, lastName, email, password)
     }
 
-    private fun getUserByEmailAndPassword(email: String, password: String) {
+    private fun postNewUser(firstName: String, lastName: String, email: String, password: String){
 
-        val requestCall = userRestService.getUserByEmailAndPassword(email, password)
+        val requestCall = userRestService.postNewUser(firstName, lastName, email, password)
         requestCall.enqueue(object : Callback, retrofit2.Callback<UserRest> {
             override fun onFailure(call: Call<UserRest>, t: Throwable) {
                 println("FAILURE")

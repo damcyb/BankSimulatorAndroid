@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.ui.LoginActivity">
+    tools:context=".View.ui.CreateUserActivity">
 
     <ImageView
         android:id="@+id/bankSimIntroImg"
@@ -21,14 +21,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/loginTitleTxt"
+        android:id="@+id/createUserTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="540dp"
         android:gravity="center"
-        android:text="Log in to your account"
+        android:text="Create new account"
         android:textAlignment="center"
         android:textColor="#4D422B"
         android:textSize="50sp"
@@ -40,22 +40,84 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/emailImg"
+        android:id="@+id/firstNameImg"
         android:layout_width="260dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:alpha=".75"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTitleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/createUserTxt"
+        app:srcCompat="@android:color/background_light" />
+
+    <ImageView
+        android:id="@+id/lastNameImg"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:alpha=".75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameImg"
+        app:srcCompat="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/firstNameTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/firstNameImg"
+        app:layout_constraintEnd_toEndOf="@+id/firstNameImg"
+        app:layout_constraintStart_toStartOf="@+id/firstNameImg"
+        app:layout_constraintTop_toTopOf="@+id/firstNameImg" />
+
+    <EditText
+        android:id="@+id/lastNameTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Last Name"
+        app:layout_constraintBottom_toBottomOf="@+id/lastNameImg"
+        app:layout_constraintEnd_toEndOf="@+id/lastNameImg"
+        app:layout_constraintStart_toStartOf="@+id/lastNameImg"
+        app:layout_constraintTop_toTopOf="@+id/lastNameImg" />
+
+    <Button
+        android:id="@+id/createUserBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#847A79"
+        android:text="Create user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordImg" />
+
+    <ImageView
+        android:id="@+id/emailImg"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:alpha=".75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameImg"
         app:srcCompat="@android:color/background_light" />
 
     <ImageView
         android:id="@+id/passwordImg"
         android:layout_width="260dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:alpha=".75"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -90,30 +152,5 @@
         app:layout_constraintEnd_toEndOf="@+id/passwordImg"
         app:layout_constraintStart_toStartOf="@+id/passwordImg"
         app:layout_constraintTop_toTopOf="@+id/passwordImg" />
-
-    <TextView
-        android:id="@+id/newAccountTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:onClick="onClick"
-        android:text="Create new account"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="#847A79"
-        android:text="LogIn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

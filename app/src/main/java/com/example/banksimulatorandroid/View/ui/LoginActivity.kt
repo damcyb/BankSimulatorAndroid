@@ -3,6 +3,7 @@ package com.example.banksimulatorandroid.View.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -44,6 +45,11 @@ class LoginActivity : AppCompatActivity() {
     private fun moveToUserAccountActivity(userAccountDetails: UserRest) {
         val intent = Intent(this, UserAccountActivity::class.java)
         intent.putExtra(EXTRA_USER_REST, userAccountDetails)
+        startActivity(intent)
+    }
+
+    fun onClick(view: View) {
+        val intent = Intent(this, CreateUserActivity::class.java)
         startActivity(intent)
     }
 }
