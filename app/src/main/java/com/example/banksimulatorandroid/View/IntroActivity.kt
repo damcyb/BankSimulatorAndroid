@@ -1,4 +1,4 @@
-package com.example.banksimulatorandroid
+package com.example.banksimulatorandroid.View
 
 import android.content.Intent
 import android.graphics.Color
@@ -6,12 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
 import co.metalab.asyncawait.async
+import com.example.banksimulatorandroid.R
 
-class MainActivity : AppCompatActivity() {
+class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_intro)
 
         async {
             val result = await {
