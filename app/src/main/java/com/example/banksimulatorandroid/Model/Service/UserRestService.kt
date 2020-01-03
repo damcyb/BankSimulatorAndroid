@@ -1,10 +1,7 @@
 package com.example.banksimulatorandroid.Model.Service
 
 import com.example.banksimulatorandroid.Model.Api.UserRestServiceApi
-import com.example.banksimulatorandroid.Model.Request.CreateUserRequestModel
-import com.example.banksimulatorandroid.Model.Request.DepositMoneyRequestModel
-import com.example.banksimulatorandroid.Model.Request.UserLoginRequestModel
-import com.example.banksimulatorandroid.Model.Request.WithdrawMoneyRequestModel
+import com.example.banksimulatorandroid.Model.Request.*
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -44,6 +41,12 @@ class UserRestService {
     fun withdrawMoneyInUserAccount(withdrawMoney: Double, userId: String): Call<UserRest> {
         val requestBody = WithdrawMoneyRequestModel(withdrawMoney)
         return api.withdrawMoney(requestBody, userId)
+    }
+
+    fun transferMoney(receiverFirstName: String, receiverLastName: String,
+                      receiverAccountNumber: String, transferredMoney: Double, userId: String): Call<UserRest> {
+        val requestBody = TransferMoneyRequestModel(receiverFirstName, receiverLastName, receiverAccountNumber, transferredMoney)
+        return api.transferMoney(requestBody, userId)
     }
 
     fun getUserById(userId: String): Call<UserRest> {

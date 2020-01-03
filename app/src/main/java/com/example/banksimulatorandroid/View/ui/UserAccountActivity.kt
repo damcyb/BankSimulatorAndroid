@@ -152,7 +152,9 @@ class UserAccountActivity : AppCompatActivity() {
     }
 
     private fun transferMoneyOptionSelected() {
-
+        val intent = Intent(this, TransferMoneyActivity::class.java)
+        intent.putExtra(EXTRA_USER_REST, userAccountDetails)
+        startActivity(intent)
     }
 
     private fun updateUserDataOptionSelected() {

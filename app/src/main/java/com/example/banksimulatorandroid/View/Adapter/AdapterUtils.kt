@@ -23,7 +23,7 @@ class AdapterUtils {
     }
 
     fun convertTransferDirection(transferDirection: String): Int {
-        return if(transferDirection.equals("SENT") || transferDirection.equals("DEPOSIT"))
+        return if(transferDirection.equals("RECEIVED") || transferDirection.equals("DEPOSIT"))
             Color.GREEN
         else
             Color.RED
