@@ -43,7 +43,6 @@ class UserAccountActivity : AppCompatActivity() {
 
 
         val header = (findViewById<View>(R.id.nav_view) as NavigationView).getHeaderView(0)
-        val balanceTxt = findViewById<TextView>(R.id.balanceTxt)
         val accountNumberTxt = findViewById<TextView>(R.id.accountNumberTxt)
         val navDrawerNameTxt = header.findViewById<TextView>(R.id.navDrawerNameTxt)
         val navDrawerEmailTxt = header.findViewById<TextView>(R.id.navDrawerEmailTxt)
@@ -75,9 +74,10 @@ class UserAccountActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.userRest.observe(this, Observer { balance ->
-            balance?.let {
+        viewModel.userRest.observe(this, Observer { user ->
+            user?.let {
                 balanceTxt.text = "${String.format("%.2f", viewModel.userRest.value!!.balance)} PLN"
+                userAccountDetails = it
             }
         })
 
@@ -146,7 +146,9 @@ class UserAccountActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun withdrawMoneyOptionSelected() {
-
+        val intent = Intent(this, WithdrawMoneyActivity::class.java)
+        intent.putExtra(EXTRA_USER_REST, userAccountDetails)
+        startActivity(intent)
     }
 
     private fun transferMoneyOptionSelected() {

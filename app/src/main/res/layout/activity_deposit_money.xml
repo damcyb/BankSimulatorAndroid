@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/drawerLayoutDeposit">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".View.ui.DepositMoneyActivity">
 
         <ImageView
             android:id="@+id/bankSimIntroImg"
@@ -98,18 +94,19 @@
             app:layout_constraintTop_toBottomOf="@+id/balanceImg"
             app:srcCompat="@android:color/background_light" />
 
-        <EditText
-            android:id="@+id/depositTxt"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:hint="Deposit money"
-            app:layout_constraintBottom_toBottomOf="@+id/depositMoneyImg"
-            app:layout_constraintEnd_toEndOf="@+id/depositMoneyImg"
-            app:layout_constraintStart_toStartOf="@+id/depositMoneyImg"
-            app:layout_constraintTop_toTopOf="@+id/depositMoneyImg" />
+    <EditText
+        android:id="@+id/depositTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Deposit money"
+        app:layout_constraintBottom_toBottomOf="@+id/depositMoneyImg"
+        app:layout_constraintEnd_toEndOf="@+id/depositMoneyImg"
+        app:layout_constraintStart_toStartOf="@+id/depositMoneyImg"
+        app:layout_constraintTop_toTopOf="@+id/depositMoneyImg" />
 
         <Button
             android:id="@+id/depositBtn"
@@ -122,14 +119,4 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/depositMoneyImg" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view_deposit_money"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/account_nav_drawer"/>
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
