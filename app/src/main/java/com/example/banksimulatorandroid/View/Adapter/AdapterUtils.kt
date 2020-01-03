@@ -22,9 +22,10 @@ class AdapterUtils {
         return "$transferredMoney PLN"
     }
 
-//    fun convertTransferDirection(transferDirection: String) {
-//        if(transferDirection.equals("SENDER"))
-//            transferDirection.setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN)
-//        else transferDirection.setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN)
-//    }
+    fun convertTransferDirection(transferDirection: String): Int {
+        return if(transferDirection.equals("SENT") || transferDirection.equals("DEPOSIT"))
+            Color.GREEN
+        else
+            Color.RED
+    }
 }

@@ -9,19 +9,21 @@
 
     <TextView
         android:id="@+id/dateTxt"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="Date"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/receiverFirstNameTxt"
-        android:layout_width="80dp"
+        android:layout_width="70dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|left"
         android:text="firstName"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <TextView
@@ -31,15 +33,17 @@
         android:layout_weight="1"
         android:gravity="center|left"
         android:text="lastName"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/receiverAccountNumberTxt"
-        android:layout_width="160dp"
+        android:layout_width="140dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|left"
         android:text="accountNumber"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <TextView
@@ -49,6 +53,7 @@
         android:layout_weight="1"
         android:gravity="center|left"
         android:text="PLN"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <ImageView

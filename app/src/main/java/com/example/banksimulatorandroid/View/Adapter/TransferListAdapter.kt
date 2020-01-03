@@ -1,7 +1,5 @@
 package com.example.banksimulatorandroid.View.Adapter
 
-import android.graphics.Color
-import android.graphics.ColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.banksimulatorandroid.Model.Response.TransferRest
 import com.example.banksimulatorandroid.R
 import kotlinx.android.synthetic.main.item_transfer.view.*
-import java.lang.StringBuilder
 
 class TransferListAdapter(var transfers: ArrayList<TransferRest>): RecyclerView.Adapter<TransferListAdapter.TransferViewHolder>() {
 
@@ -31,22 +28,24 @@ class TransferListAdapter(var transfers: ArrayList<TransferRest>): RecyclerView.
 
     class TransferViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val adapterUtils = AdapterUtils()
+        private val adapterUtils = AdapterUtils()
 
-        val date = view.dateTxt
-        val receiverFirstName = view.receiverFirstNameTxt
-        val receiverLastName = view.receiverLastNameTxt
-        val receiverAccountNumber = view.receiverAccountNumberTxt
-        val transferredMoney = view.transferredMoneyTxt
-        val transferDirection = view.transferDirectionImg
+        private val date = view.dateTxt
+        private val receiverFirstName = view.receiverFirstNameTxt
+        private val receiverLastName = view.receiverLastNameTxt
+        private val receiverAccountNumber = view.receiverAccountNumberTxt
+        private val transferredMoney = view.transferredMoneyTxt
+        private val transferDirection = view.transferDirectionImg
 
         fun bind(transfer: TransferRest) {
 
             date.text = adapterUtils.convertDate(transfer.date)
-            receiverFirstName.text = transfer.receiverFirstName
-            receiverLastName.text = transfer.receiverLastName
-            receiverAccountNumber.text = adapterUtils.convertAccountNumber(transfer.receiverAccountNumber)
+            receiverFirstName.text = transfer.firstName
+            receiverLastName.text = transfer.lastName
+            receiverAccountNumber.text = adapterUtils.convertAccountNumber(transfer.accountNumber)
             transferredMoney.text = adapterUtils.convertTransferredMoney(transfer.transferredMoney)
+            val color = adapterUtils.convertTransferDirection(transfer.transferDirection)
+            transferDirection.setColorFilter(color, android.graphics.PorterDuff.Mode.SRC_IN)
         }
     }
 }

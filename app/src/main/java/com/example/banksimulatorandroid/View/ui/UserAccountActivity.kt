@@ -1,5 +1,6 @@
 package com.example.banksimulatorandroid.View.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -31,13 +32,22 @@ class UserAccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_account)
         userAccountDetails = intent.getParcelableExtra(EXTRA_USER_REST)
 
+        viewModel = ViewModelProviders.of(this).get(UserAccountViewModel(application)::class.java)
+        viewModel.refresh(userAccountDetails.userId)
+        viewModel.getUser(userAccountDetails.userId)
+
+        transferList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = transfersAdapter
+        }
+
+
         val header = (findViewById<View>(R.id.nav_view) as NavigationView).getHeaderView(0)
         val balanceTxt = findViewById<TextView>(R.id.balanceTxt)
         val accountNumberTxt = findViewById<TextView>(R.id.accountNumberTxt)
         val navDrawerNameTxt = header.findViewById<TextView>(R.id.navDrawerNameTxt)
         val navDrawerEmailTxt = header.findViewById<TextView>(R.id.navDrawerEmailTxt)
 
-        val balanceString = "${String.format("%.2f", userAccountDetails.balance)} PLN"
         val accountNumberStringBuilder = StringBuilder()
         accountNumberStringBuilder.append(userAccountDetails.accountNumber)
         accountNumberStringBuilder.insert(2, " ").insert(7, " ")
@@ -45,7 +55,6 @@ class UserAccountActivity : AppCompatActivity() {
         val nameString = "${userAccountDetails.firstName} ${userAccountDetails.lastName}"
         val emailString = "${userAccountDetails.email}"
 
-        balanceTxt.text = balanceString
         accountNumberTxt.text = accountNumberStringBuilder
         navDrawerNameTxt.text = nameString
         navDrawerEmailTxt.text = emailString
@@ -62,17 +71,16 @@ class UserAccountActivity : AppCompatActivity() {
         }
         navDrawerOptionsSelected()
 
-        viewModel = ViewModelProviders.of(this).get(UserAccountViewModel(application)::class.java)
-        viewModel.refresh(userAccountDetails.userId)
-
-        transferList.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = transfersAdapter
-            }
         observeViewModel()
     }
 
     private fun observeViewModel() {
+        viewModel.userRest.observe(this, Observer { balance ->
+            balance?.let {
+                balanceTxt.text = "${String.format("%.2f", viewModel.userRest.value!!.balance)} PLN"
+            }
+        })
+
         viewModel.transferList.observe(this, Observer { transfers ->
             transfers?.let {
                 transferList.visibility = View.VISIBLE
@@ -133,7 +141,9 @@ class UserAccountActivity : AppCompatActivity() {
     }
 
     private fun depositMoneyOptionSelected() {
-
+        val intent = Intent(this, DepositMoneyActivity::class.java)
+        intent.putExtra(EXTRA_USER_REST, userAccountDetails)
+        startActivity(intent)
     }
     private fun withdrawMoneyOptionSelected() {
 
@@ -148,6 +158,13 @@ class UserAccountActivity : AppCompatActivity() {
     }
 
     private fun deleteAccountOptionSelected() {
+
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        viewModel.refresh(userAccountDetails.userId)
+        viewModel.getUser(userAccountDetails.userId)
 
     }
 }

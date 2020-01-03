@@ -7,15 +7,18 @@ data class TransferRest (
     @SerializedName("date")
     val date: String,
 
-    @SerializedName("receiverFirstName")
-    val receiverFirstName: String,
+    @SerializedName("firstName")
+    val firstName: String,
 
-    @SerializedName("receiverLastName")
-    val receiverLastName: String,
+    @SerializedName("lastName")
+    val lastName: String,
 
-    @SerializedName("receiverAccountNumber")
-    val receiverAccountNumber: String,
+    @SerializedName("accountNumber")
+    val accountNumber: String,
 
     @SerializedName("transferredMoney")
-    val transferredMoney: Double
+    val transferredMoney: Double,
+
+    @SerializedName("transferDirection")
+    val transferDirection: String
 )

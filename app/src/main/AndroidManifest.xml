@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.ui.DepositMoneyActivity"></activity>
         <activity
             android:name=".View.ui.test"
             android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.ui.CreateUserActivity" />
         <activity android:name=".View.ui.UserAccountActivity" />
         <activity

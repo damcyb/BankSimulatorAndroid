@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".View.ui.IntroActivity">
 
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragment_intro"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--    </FrameLayout>-->
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragment_login"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--    </FrameLayout>-->
-
     <ImageView
         android:id="@+id/bankSimIntroImg"
         android:layout_width="wrap_content"
