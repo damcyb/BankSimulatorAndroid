@@ -136,6 +136,10 @@ class UserAccountActivity : AppCompatActivity() {
                 deleteAccountOptionSelected()
                 drawerLayout.closeDrawer(GravityCompat.START)
             }
+            if(menuItem.itemId == R.id.logoutItm) {
+                logoutOptionSelected()
+                drawerLayout.closeDrawer(GravityCompat.START)
+            }
             true
         }
     }
@@ -166,6 +170,12 @@ class UserAccountActivity : AppCompatActivity() {
     private fun deleteAccountOptionSelected() {
         val intent = Intent(this, DeleteUserActivity::class.java)
         intent.putExtra(EXTRA_USER_REST, userAccountDetails)
+        startActivity(intent)
+    }
+
+    private fun logoutOptionSelected() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 
