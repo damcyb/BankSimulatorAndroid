@@ -1,6 +1,7 @@
 package com.example.banksimulatorandroid.Model.Api
 
 import com.example.banksimulatorandroid.Model.Request.*
+import com.example.banksimulatorandroid.Model.Response.OperationStatus
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -29,6 +30,9 @@ interface UserRestServiceApi {
 
     @PUT("users/{userId}")
     fun updateUser(@Body updateUserDetails: CreateUserRequestModel, @Path("userId") userId: String): Call<UserRest>
+
+    @DELETE("/users/{userId}")
+    fun deleteUser(@Path("userId") userId: String): Call<OperationStatus>
 
 //    @POST("/users/login")
 //    fun loginUser(@Body requestBody: Use): Call<ResponseBody>

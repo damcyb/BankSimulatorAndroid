@@ -2,6 +2,7 @@ package com.example.banksimulatorandroid.Model.Service
 
 import com.example.banksimulatorandroid.Model.Api.UserRestServiceApi
 import com.example.banksimulatorandroid.Model.Request.*
+import com.example.banksimulatorandroid.Model.Response.OperationStatus
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -36,6 +37,10 @@ class UserRestService {
     fun putUpdatedUser(firstName: String, lastName: String, email: String, password: String, userId: String): Call<UserRest> {
         val requestBody = CreateUserRequestModel(firstName, lastName, email, password)
         return api.updateUser(requestBody, userId)
+    }
+
+    fun deleteUser(userId: String): Call<OperationStatus> {
+        return api.deleteUser(userId)
     }
 
     fun depositMoneyInUserAccount(depositMoney: Double, userId: String): Call<UserRest> {

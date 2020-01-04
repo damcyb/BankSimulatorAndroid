@@ -164,7 +164,9 @@ class UserAccountActivity : AppCompatActivity() {
     }
 
     private fun deleteAccountOptionSelected() {
-
+        val intent = Intent(this, DeleteUserActivity::class.java)
+        intent.putExtra(EXTRA_USER_REST, userAccountDetails)
+        startActivity(intent)
     }
 
     override fun onRestart() {
