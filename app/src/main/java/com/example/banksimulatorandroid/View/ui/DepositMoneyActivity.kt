@@ -8,10 +8,12 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.banksimulatorandroid.Constants.DEPOSIT_INPUT_ERROR
 import com.example.banksimulatorandroid.Constants.EXTRA_USER_REST
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import com.example.banksimulatorandroid.R
@@ -19,6 +21,7 @@ import com.example.banksimulatorandroid.ViewModel.DepositMoneyViewModel
 import com.example.banksimulatorandroid.ViewModel.LoginViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_user_account.*
+import java.lang.NumberFormatException
 import java.lang.StringBuilder
 
 class DepositMoneyActivity : AppCompatActivity() {
@@ -53,7 +56,11 @@ class DepositMoneyActivity : AppCompatActivity() {
         observeViewModel()
 
         depositMoneyBtn.setOnClickListener {
-            viewModel.deposit(depositMoneyTxt.text.toString().toDouble(), userAccountDetails.userId)
+            try {
+                viewModel.deposit(depositMoneyTxt.text.toString().toDouble(), userAccountDetails.userId)
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, DEPOSIT_INPUT_ERROR, Toast.LENGTH_LONG).show()
+            }
         }
     }
 

@@ -41,7 +41,6 @@ class UserAccountActivity : AppCompatActivity() {
             adapter = transfersAdapter
         }
 
-
         val header = (findViewById<View>(R.id.nav_view) as NavigationView).getHeaderView(0)
         val accountNumberTxt = findViewById<TextView>(R.id.accountNumberTxt)
         val navDrawerNameTxt = header.findViewById<TextView>(R.id.navDrawerNameTxt)

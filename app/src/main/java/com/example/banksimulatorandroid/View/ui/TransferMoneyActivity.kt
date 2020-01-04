@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.banksimulatorandroid.Constants.EXTRA_USER_REST
+import com.example.banksimulatorandroid.Constants.TRANSFER_INPUT_ERROR
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import com.example.banksimulatorandroid.R
 import com.example.banksimulatorandroid.ViewModel.TransferMoneyViewModel
 import com.example.banksimulatorandroid.ViewModel.WithdrawMoneyViewModel
+import java.lang.NumberFormatException
 
 class TransferMoneyActivity : AppCompatActivity() {
 
@@ -47,9 +50,13 @@ class TransferMoneyActivity : AppCompatActivity() {
         observeViewModel()
 
         transferMoneyBtn.setOnClickListener {
-            viewModel.transfer(receiverFirstName.text.toString(), receiverLastName.text.toString(),
-                receiverAccountNumber.text.toString(), transferredMoney.text.toString().toDouble(),
+            try {
+                viewModel.transfer(receiverFirstName.text.toString(), receiverLastName.text.toString(),
+                    receiverAccountNumber.text.toString(), transferredMoney.text.toString().toDouble(),
                     userAccountDetails.userId)
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, TRANSFER_INPUT_ERROR, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

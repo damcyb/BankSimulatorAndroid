@@ -6,12 +6,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.banksimulatorandroid.Constants.EXTRA_USER_REST
+import com.example.banksimulatorandroid.Constants.LOGIN_INPUT_ERROR
+import com.example.banksimulatorandroid.Constants.TRANSFER_INPUT_ERROR
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import com.example.banksimulatorandroid.R
 import com.example.banksimulatorandroid.ViewModel.LoginViewModel
+import java.lang.NumberFormatException
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,7 +34,11 @@ class LoginActivity : AppCompatActivity() {
         observeViewModel()
 
         loginBtn.setOnClickListener {
-            viewModel.loginUser(email.text.toString(), password.text.toString())
+            try {
+                viewModel.loginUser(email.text.toString(), password.text.toString())
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, LOGIN_INPUT_ERROR, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

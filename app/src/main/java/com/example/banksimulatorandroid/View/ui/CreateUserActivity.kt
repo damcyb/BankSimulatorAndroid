@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.example.banksimulatorandroid.Constants.CREATE_USER_INPUT_ERROR
 import com.example.banksimulatorandroid.Constants.EXTRA_USER_REST
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import com.example.banksimulatorandroid.R
 import com.example.banksimulatorandroid.ViewModel.CreateUserViewModel
 import com.example.banksimulatorandroid.ViewModel.LoginViewModel
+import java.lang.NumberFormatException
 
 class CreateUserActivity : AppCompatActivity() {
 
@@ -33,8 +36,12 @@ class CreateUserActivity : AppCompatActivity() {
         observeViewModel()
 
         createUserBtn.setOnClickListener {
-            viewModel.createUser(firstName.text.toString(), lastName.text.toString(),
-                email.text.toString(), password.text.toString())
+            try {
+                viewModel.createUser(firstName.text.toString(), lastName.text.toString(),
+                    email.text.toString(), password.text.toString())
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, CREATE_USER_INPUT_ERROR, Toast.LENGTH_LONG).show()
+            }
         }
     }
 

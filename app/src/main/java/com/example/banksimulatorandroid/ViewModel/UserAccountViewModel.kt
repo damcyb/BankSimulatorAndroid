@@ -1,14 +1,19 @@
 package com.example.banksimulatorandroid.ViewModel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.banksimulatorandroid.Constants.NETWORK_ERROR
+import com.example.banksimulatorandroid.Constants.TRANSFER_MONEY_ERROR
+import com.example.banksimulatorandroid.Constants.USER_NOT_FOUND
 import com.example.banksimulatorandroid.Model.Response.TransferRest
 import com.example.banksimulatorandroid.Model.Response.UserRest
 import com.example.banksimulatorandroid.Model.Service.TransferRestService
 import com.example.banksimulatorandroid.Model.Service.UserRestService
 import retrofit2.Call
 import retrofit2.Response
+import java.lang.RuntimeException
 import javax.security.auth.callback.Callback
 
 class UserAccountViewModel(application: Application): AndroidViewModel(application) {
@@ -29,16 +34,12 @@ class UserAccountViewModel(application: Application): AndroidViewModel(applicati
         val requestCall = transferRestService.getUserTransfers(userId)
         requestCall.enqueue(object : Callback, retrofit2.Callback<List<TransferRest>> {
             override fun onFailure(call: Call<List<TransferRest>>, t: Throwable) {
-                println("FAILURE")
+                Toast.makeText(getApplication(), NETWORK_ERROR, Toast.LENGTH_SHORT).show()
                 loading.value = false
                 transferListError.value = true
             }
 
-            override fun onResponse(
-                call: Call<List<TransferRest>>,
-                response: Response<List<TransferRest>>
-            ) {
-                println("SUCCESS")
+            override fun onResponse(call: Call<List<TransferRest>>, response: Response<List<TransferRest>>) {
                 transferList.value = response.body()
                 loading.value = false
                 transferListError.value = false
@@ -55,11 +56,14 @@ class UserAccountViewModel(application: Application): AndroidViewModel(applicati
         val requestCall = userRestService.getUserById(userId)
         requestCall.enqueue(object : Callback, retrofit2.Callback<UserRest> {
             override fun onFailure(call: Call<UserRest>, t: Throwable) {
-                println("FAILURE")
+                Toast.makeText(getApplication(), NETWORK_ERROR, Toast.LENGTH_SHORT).show()
             }
             override fun onResponse(call: Call<UserRest>, response: Response<UserRest>) {
-                userRest.value = response.body()!!
-                println("SUCCESS")
+                try {
+                    userRest.value = response.body()!!
+                } catch (e: RuntimeException) {
+                    Toast.makeText(getApplication(), USER_NOT_FOUND, Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }
