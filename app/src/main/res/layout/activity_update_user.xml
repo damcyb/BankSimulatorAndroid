@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.ui.UpdateUserActivity">
+
+    <ImageView
+        android:id="@+id/bankSimIntroImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:alpha=".55"
+        android:src="@drawable/bank_sim_intro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/updateUserTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="540dp"
+        android:gravity="center"
+        android:text="Update account data"
+        android:textAlignment="center"
+        android:textColor="#4D422B"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@+id/bankSimIntroImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/firstNameImg"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:alpha=".75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateUserTxt"
+        app:srcCompat="@android:color/background_light" />
+
+    <ImageView
+        android:id="@+id/lastNameImg"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:alpha=".75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameImg"
+        app:srcCompat="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/firstNameTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/firstNameImg"
+        app:layout_constraintEnd_toEndOf="@+id/firstNameImg"
+        app:layout_constraintStart_toStartOf="@+id/firstNameImg"
+        app:layout_constraintTop_toTopOf="@+id/firstNameImg" />
+
+    <EditText
+        android:id="@+id/lastNameTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Last Name"
+        app:layout_constraintBottom_toBottomOf="@+id/lastNameImg"
+        app:layout_constraintEnd_toEndOf="@+id/lastNameImg"
+        app:layout_constraintStart_toStartOf="@+id/lastNameImg"
+        app:layout_constraintTop_toTopOf="@+id/lastNameImg" />
+
+    <Button
+        android:id="@+id/updateUserBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#847A79"
+        android:text="Update user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordImg" />
+
+    <ImageView
+        android:id="@+id/emailImg"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:alpha=".75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameImg"
+        app:srcCompat="@android:color/background_light" />
+
+    <ImageView
+        android:id="@+id/passwordImg"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:alpha=".75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailImg"
+        app:srcCompat="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/emailTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/emailImg"
+        app:layout_constraintEnd_toEndOf="@+id/emailImg"
+        app:layout_constraintStart_toStartOf="@+id/emailImg"
+        app:layout_constraintTop_toTopOf="@+id/emailImg" />
+
+    <EditText
+        android:id="@+id/passwordTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordImg"
+        app:layout_constraintEnd_toEndOf="@+id/passwordImg"
+        app:layout_constraintStart_toStartOf="@+id/passwordImg"
+        app:layout_constraintTop_toTopOf="@+id/passwordImg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

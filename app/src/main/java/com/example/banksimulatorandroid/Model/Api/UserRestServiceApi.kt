@@ -13,7 +13,7 @@ interface UserRestServiceApi {
     fun loginUser(@Body userLoginDetails: UserLoginRequestModel): Call<UserRest>
 
     @POST("/users")
-    fun createUser(@Body userLoginDetails: CreateUserRequestModel): Call<UserRest>
+    fun createUser(@Body userCreateDetails: CreateUserRequestModel): Call<UserRest>
 
     @GET("/users/{userId}")
     fun getUser(@Path("userId") userId: String): Call<UserRest>
@@ -26,6 +26,9 @@ interface UserRestServiceApi {
 
     @PUT("users/transfer/{userId}")
     fun transferMoney(@Body transferMoneyDetails: TransferMoneyRequestModel, @Path("userId") userId: String): Call<UserRest>
+
+    @PUT("users/{userId}")
+    fun updateUser(@Body updateUserDetails: CreateUserRequestModel, @Path("userId") userId: String): Call<UserRest>
 
 //    @POST("/users/login")
 //    fun loginUser(@Body requestBody: Use): Call<ResponseBody>

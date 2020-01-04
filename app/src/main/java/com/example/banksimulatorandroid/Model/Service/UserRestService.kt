@@ -33,6 +33,11 @@ class UserRestService {
         return api.createUser(requestBody)
     }
 
+    fun putUpdatedUser(firstName: String, lastName: String, email: String, password: String, userId: String): Call<UserRest> {
+        val requestBody = CreateUserRequestModel(firstName, lastName, email, password)
+        return api.updateUser(requestBody, userId)
+    }
+
     fun depositMoneyInUserAccount(depositMoney: Double, userId: String): Call<UserRest> {
         val requestBody = DepositMoneyRequestModel(depositMoney)
         return api.depositMoney(requestBody, userId)
